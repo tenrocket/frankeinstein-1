@@ -1,0 +1,8 @@
+%h1 INTERESTS
+%h4 TELL US WHAT YOU LIKE TO LEARN ABOUT
+%br
+%br 
+- @interests.each do |i|
+	= i.name
+	%br
+	/ = image_tag i.interest_image.url

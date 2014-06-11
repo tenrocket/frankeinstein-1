@@ -1,0 +1,19 @@
+%html{lang: "en"}
+  %head
+    %meta{charset: "utf-8"}
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}
+    %title= content_for?(:title) ? yield(:title) : "Frankeinstein"
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "vendor/modernizr"
+    = csrf_meta_tags
+  %body
+    .small
+      - if current_user
+        Signed in as #{current_user.name}
+        = link_to "Log Out", logout_path
+      - else
+        = link_to "Login with Facebook", '/auth/facebook'
+    - flash.each do |name, msg|
+      = content_tag :div, msg, :id => "flash_#{name}"
+    = yield
+    = javascript_include_tag "application"

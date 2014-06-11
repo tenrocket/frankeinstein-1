@@ -1,0 +1,7 @@
+%h1 CHALLENGES
+%br
+- @challenges.each do |c|
+	= image_tag c.challenge_image.url
+	%br
+	= c.name
+	%br

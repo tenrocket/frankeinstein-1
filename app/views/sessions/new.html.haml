@@ -1,0 +1,12 @@
+/ %br
+/ %button{href: '/auth/facebook'} LOGIN WITH FACEBOOK
+%br
+%h3 LOGIN WITH FRANKEINSTEIN
+= form_tag sessions_path do
+	= label_tag :email
+	= text_field_tag :email, params[:email]
+	= label_tag :password
+	= password_field_tag :password
+	%br
+	%button{type: 'submit'} LOGIN
+

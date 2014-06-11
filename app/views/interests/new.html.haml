@@ -1,0 +1,13 @@
+%br
+= form_for @new_interest, method: :post do |f|
+	NAME
+	= f.text_field :name
+	%br
+	DESCRIPTION 
+	= f.text_area :description
+	UPLOAD IMAGE
+	%br
+	%br
+	= f.file_field :interest_image
+	%br
+	%button{type: 'submit'} CREATE INTEREST

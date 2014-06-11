@@ -1,0 +1,18 @@
+%br
+%a.button{href: "/auth/facebook"} REGISTER WITH FACEBOOK
+
+/ = link_to "REGISTER WITH FACEBOOK", '/auth/facebook'
+
+%h3 REGISTER WITH FRANKEINSTEIN
+= form_for @new_user, url: users_path, method: :post do |f|
+	NAME
+	= f.text_field :name
+	EMAIL 
+	= f.email_field :email
+	PASSWORD
+	= f.password_field :password
+	%br
+	CONFIRM PASSWORD
+	= f.password_field :password_confirmation
+	%br
+	%button{type: 'submit'} SIGN UP

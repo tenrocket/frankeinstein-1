@@ -1,0 +1,27 @@
+/ .profile_image
+/ 	= image_tag @user.user_image.url
+%h1= @user.name.upcase
+%br
+POINTS
+- @user.points.all do |p|
+	= p.value
+%br
+%br
+%br
+%h3= @user.title.upcase
+%p= @user.description
+
+YOUR CHALLENGES
+- @user.challenges.each do |c|
+	= c.name
+%br
+%br
+YOUR INTERESTS
+- @user.interests.each do |i|
+	= i.name
+%br
+
+/ = form_for @user, method: :put do |f|
+/ 	= f.interests.each do |i|
+/ 		= i.check_box_tag :interest_id
+/ 		= i.name
