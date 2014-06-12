@@ -2,6 +2,7 @@ class ChallengesController < ApplicationController
 
 	def index
 		@challenges = Challenge.all
+		@search = Search.all
 	end
 
 	def new
@@ -32,6 +33,7 @@ class ChallengesController < ApplicationController
 
 	def show
 		@challenge = Challenge.find(params[:id])
+		@user = @challenge.users.build
 	end
 
 	def destroy

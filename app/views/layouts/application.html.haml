@@ -15,5 +15,12 @@
         = link_to "Login with Facebook", '/auth/facebook'
     - flash.each do |name, msg|
       = content_tag :div, msg, :id => "flash_#{name}"
+    .row
+      .large-6.columns
+        .row.collapse
+          .small-10.columns
+            = form_tag @searches do
+              = text_field_tag :keywords
+              %button.postfix{type: 'submit_tag'} SEARCH        
     = yield
     = javascript_include_tag "application"

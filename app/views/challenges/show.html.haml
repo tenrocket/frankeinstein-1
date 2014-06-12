@@ -1,0 +1,21 @@
+%br
+= image_tag @challenge.challenge_image.url
+%ul 
+	%li SUBMIT
+	%li SHARE
+%br
+= form_for @challenge, method: :put do |f|
+	= f.hidden_field :user_ids, User.all, :id, :name
+	%button{type: 'submit', href: '/users/#{@user.id}'} CHALLENGE ACCEPTED
+%br
+/ = @user.challenge.name
+%br
+= @challenge.name
+
+%br
+= @challenge.description
+
+/ = form_for @user do |f|
+/ 	= f.collection_check_boxes :interest_ids, Interest.all, :id, :name
+/ 	%br
+/ 	%button{type: 'submit'} ADD INTERESTS

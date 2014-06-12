@@ -1,6 +1,8 @@
-/ .profile_image
-/ 	= image_tag @user.user_image.url
+.profile_image
+	= image_tag @user.image
+
 %h1= @user.name.upcase
+
 %br
 POINTS
 - @user.points.all do |p|
@@ -8,8 +10,17 @@ POINTS
 %br
 %br
 %br
-%h3= @user.title.upcase
+/ %h3= @user.title.upcase
 %p= @user.description
+
+ADD YOUR PERSONAL MISSION STATEMENT
+%br
+= form_for @user do |f|
+	= f.text_field :title, :placeholder => 'You in three words'
+	%br
+	= f.text_area :description, :placeholder => 'Your personal mission statement'
+	%br
+	%button{type: 'submit'} THIS IS ME
 
 YOUR CHALLENGES
 - @user.challenges.each do |c|
@@ -17,11 +28,27 @@ YOUR CHALLENGES
 %br
 %br
 YOUR INTERESTS
-- @user.interests.each do |i|
-	= i.name
+/ - @user.interests.each do |i|
+/ 	= i.name
 %br
+%br
+%br
+= form_for @user do |f|
+	= f.collection_check_boxes :interest_ids, Interest.all, :id, :name
+	%br
+	%button{type: 'submit'} ADD INTERESTS
 
-/ = form_for @user, method: :put do |f|
-/ 	= f.interests.each do |i|
-/ 		= i.check_box_tag :interest_id
-/ 		= i.name
+YOUR PORTFOLIO
+/ = image_tag @user.portfolio_item.url
+%br
+%br
+%br
+%br
+= form_for @user do |f|
+	= f.file_field :portfolio_item 
+	%button{type: 'submit'} ADD TO PORTFOLIO
+
+/ - Interest.all.each do |interest|
+/ 	= hidden_field_tag "user[interest_ids][]", nil
+/ 	= check_box_tag "user[interest_ids][]", interest.id, @user.interest_ids.include?(interest.id), id: dom_id(interest)
+/ 	= label_tag dom_id(interest), interest.name

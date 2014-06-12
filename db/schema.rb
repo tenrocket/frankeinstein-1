@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140611004409) do
+ActiveRecord::Schema.define(version: 20140612011621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,14 +23,19 @@ ActiveRecord::Schema.define(version: 20140611004409) do
     t.date     "end_date"
     t.string   "attachment"
     t.string   "status"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "challenge_image"
   end
 
   create_table "challenges_interests", force: true do |t|
     t.integer "challenge_id"
     t.integer "interest_id"
+  end
+
+  create_table "challenges_users", force: true do |t|
+    t.integer "challenge_id"
+    t.integer "user_id"
   end
 
   create_table "comments", force: true do |t|
@@ -64,6 +69,16 @@ ActiveRecord::Schema.define(version: 20140611004409) do
     t.datetime "updated_at"
   end
 
+  create_table "searches", force: true do |t|
+    t.string   "keywords"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "searchable_type"
+    t.integer  "searchable_id"
+  end
+
   create_table "submissions", force: true do |t|
     t.string   "name"
     t.string   "description"
@@ -81,7 +96,7 @@ ActiveRecord::Schema.define(version: 20140611004409) do
     t.string   "password_digest"
     t.string   "description"
     t.string   "type"
-    t.string   "attachment"
+    t.string   "portfolio_item"
     t.boolean  "admin?"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -90,7 +105,7 @@ ActiveRecord::Schema.define(version: 20140611004409) do
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.string   "title"
-    t.string   "user_image"
+    t.string   "image"
   end
 
 end

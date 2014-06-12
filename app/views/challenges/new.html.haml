@@ -1,1 +1,20 @@
-new.html.haml
+%br
+= form_for @new_challenge, method: :post do |f|
+	NAME YOUR CHALLENGE
+	= f.text_field :name
+	%br
+	DESCRIBE IT
+	= f.text_area :description
+	%br
+	WHEN DOES IT START?
+	= f.date_select :start_date
+	%br
+	WHEN DOES IT END?
+	= f.date_select :end_date
+	%br
+	UPLOAD IMAGE
+	= f.file_field :challenge_image
+	%br
+	= f.hidden_field :user_id
+	%br
+	%button{type: 'submit'} CREATE CHALLENGE
