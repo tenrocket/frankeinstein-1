@@ -1,20 +1,30 @@
 %br
+.row
+	%h2 CREATE A NEW CHALLENGE
+%br
 = form_for @new_challenge, method: :post do |f|
-	NAME YOUR CHALLENGE
-	= f.text_field :name
-	%br
-	DESCRIBE IT
-	= f.text_area :description
-	%br
-	WHEN DOES IT START?
-	= f.date_select :start_date
-	%br
-	WHEN DOES IT END?
-	= f.date_select :end_date
-	%br
-	UPLOAD IMAGE
-	= f.file_field :challenge_image
-	%br
-	= f.hidden_field :user_id
-	%br
-	%button{type: 'submit'} CREATE CHALLENGE
+	.row
+		.large-4.columns
+			NAME YOUR CHALLENGE
+			= f.text_field :name
+		.large_4.columns
+			DESCRIBE IT
+			= f.text_area :description
+		%br
+	.row
+		.large-4.columns
+			WHEN DOES IT START?
+			= f.date_select :start_date
+		.large-4.columns
+			WHEN DOES IT END?
+			= f.date_select :end_date
+			%br
+	.row
+		.large-4.columns
+			UPLOAD IMAGE
+			= f.file_field :challenge_image
+			%br
+			= fields_for @user do |ff|
+				= ff.hidden_field :user_id, value: @user.id
+				= ff.hidden_field :challenger, value: @user.challenger
+			%button{type: 'submit'} CREATE CHALLENGE

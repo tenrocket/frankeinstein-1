@@ -7,12 +7,14 @@ class ChallengesController < ApplicationController
 
 	def new
 		@new_challenge = Challenge.new
+		@user = current_user
 	end
 
 	def create
+		@user = current_user
 		@new_challenge = Challenge.new(challenge_params)
 		if @new_challenge.save 
-			redirect_to '/challenges/#{@new_challenge.id}'
+			redirect_to challenge_path(@new_challenge)
 		else
 			render :new, notice: "Failed to create new challenge.  Please try again."
 		end
@@ -32,8 +34,8 @@ class ChallengesController < ApplicationController
 	end
 
 	def show
+		@user = current_user
 		@challenge = Challenge.find(params[:id])
-		@user = @challenge.users.build
 	end
 
 	def destroy
@@ -43,6 +45,6 @@ class ChallengesController < ApplicationController
 
 	def challenge_params
 		params.require(:challenge).permit!
-	end
+  end
 
 end

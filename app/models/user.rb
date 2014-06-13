@@ -2,13 +2,14 @@ class User < ActiveRecord::Base
 
 	has_many :comments, as: :commentable
 	has_many :searches, as: :searchable
+	has_many :user_challenges
 	has_many :submissions
 	has_many :points
 	
 	has_and_belongs_to_many :interests
-	has_and_belongs_to_many :challenges
+	has_many :challenges, through: :user_challenges
 
-	mount_uploader :user_image, UserImageUploader
+	# mount_uploader :image, UserImageUploader
 	mount_uploader :portfolio_item, PortfolioItemUploader
 
 	# has_secure_password

@@ -1,16 +1,25 @@
+/ = @challenge.user.name
+.row
+	.large-12.columns
+		= form_for UserChallenge.new do |f|
+			= f.hidden_field :user_id, value: @user.id
+			= f.hidden_field :challenge_id, value: @challenge.id
+			%button{type: 'submit'} CHALLENGE ACCEPTED
+			%button SUBMIT YOUR CREATION
+			%button SHARE
+
+
+.row.collapse
+	%ul.block-grid.four-up.mobile-two-up.no-bullet
+		%li.project-thumbnail
+			%img
+				= image_tag @challenge.challenge_image.url
+				= @challenge.name
 %br
-= image_tag @challenge.challenge_image.url
-%ul 
-	%li SUBMIT
-	%li SHARE
-%br
-= form_for @challenge, method: :put do |f|
-	= f.hidden_field :user_ids, User.all, :id, :name
-	%button{type: 'submit', href: '/users/#{@user.id}'} CHALLENGE ACCEPTED
-%br
+
+/ %br
 / = @user.challenge.name
 %br
-= @challenge.name
 
 %br
 = @challenge.description

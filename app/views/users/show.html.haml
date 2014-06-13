@@ -4,6 +4,9 @@
 %h1= @user.name.upcase
 
 %br
+%a.button{href: '/challenges'} BROWSE CHALLENGES
+
+%br
 POINTS
 - @user.points.all do |p|
 	= p.value
@@ -23,8 +26,10 @@ ADD YOUR PERSONAL MISSION STATEMENT
 	%button{type: 'submit'} THIS IS ME
 
 YOUR CHALLENGES
+%br
+%br
 - @user.challenges.each do |c|
-	= c.name
+	= link_to image_tag(c.challenge_image, style: "width: 33%"), c
 %br
 %br
 YOUR INTERESTS
