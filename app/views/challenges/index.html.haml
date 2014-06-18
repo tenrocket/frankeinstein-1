@@ -1,13 +1,15 @@
 %h1 CHALLENGES
 %br
 
-FILTERS
-= sort_link @search, :start_date, "START DATE"
-= sort_link @search, :end_date, "END DATE"
-= sort_link @search, :updated_at, "RECENTLY UPDATED"
-= sort_link @search, :
-
 .row
+	%ul.filters
+		%li.h3.filter FILTERS
+		%li.filter= sort_link @search, :start_date, "START DATE"
+		%li.filter= sort_link @search, :end_date, "END DATE"
+		%li.filter= sort_link @search, :updated_at, "RECENTLY UPDATED"
+
+.row.chal
 	.challenge
+		%ul.small-block-grid-3.small-centered
 		- @challenges.each do |c|
 			= link_to image_tag(c.challenge_image.url, style: "width: 33%"), c

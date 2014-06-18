@@ -27,7 +27,7 @@
 	%br
 	.challenges
 		%h3.challenge_title YOUR CHALLENGES
-		%ul.small-block-grid-3
+		%ul.small-block-grid-3.small-centered
 			= link_to image_tag('Logo.png', style: "width: 33%"), ('/challenges/21')
 			- @user.challenges.each do |c|
 				= link_to image_tag(c.challenge_image, style: "width: 33%"), c

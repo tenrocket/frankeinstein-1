@@ -1,54 +1,63 @@
-%br
-= link_to image_tag(@challenge.challenger.image), user_path(@challenge.challenger.id)
-%h3= link_to @challenge.challenger.name, user_path(@challenge.challenger.id)
+/ = link_to image_tag(@challenge.challenger.image), user_path(@challenge.challenger.id)
 
-.row
-	.large-12.columns
-		= form_for UserChallenge.new do |f|
-			= f.hidden_field :user_id, value: @user.id
-			= f.hidden_field :challenge_id, value: @challenge.id
-			%button{type: 'submit'} CHALLENGE ACCEPTED
-
-		%button SHARE
-
-		%a.button{"data-reveal-id" => "myModal", href: "#"} SUBMIT YOUR CREATION
-		#myModal.reveal-modal{"data-reveal" => ""}
-			.large-12.columns
-				%h3 SUBMIT YOUR CREATION
-				%br
-			= form_for Submission.new do |f|
-				.large-6.columns
-					GIVE IT A NAME
-					= f.text_field :name
-				.large-6.columns
-					TELL US ABOUT IT
-					= f.text_area :description
-				.large-6.columns
-					CAN WE SEE IT?
-					= f.file_field :image
-					= f.hidden_field :user_id, value: @user.id
-					= f.hidden_field :challenge_id, value: @challenge.id
-				.large-6.columns
-					%button{type: 'submit'} SUBMIT
-				%a.close-reveal-modal ×
-			
+%h1= @challenge.name
 
 .row.collapse
 	%ul.block-grid.four-up.mobile-two-up.no-bullet
+		%li.project-description
+			%h3.challenge_description CHALLENGER
+			%p.description= link_to @challenge.challenger.name, user_path(@challenge.challenger.id)
 		%li.project-thumbnail
 			%img
 				= image_tag @challenge.challenge_image.url
-				= @challenge.name
-%br
+		%br
+		%br
+		%li.project-description
+			%h3.challenge_description DESCRIPTION
+			%p.description= @challenge.description
+		%br
+		%br
+		%li.project-description
+			%h3.challenge_description START DATE
+			%p.description= @challenge.start_date
+		%br
+		%br
+		%li.project-description
+			%h3.challenge_description END DATE
+			%p.description= @challenge.end_date
+		%br
+		%br
+		%li.project-description
+			.row
+				.large-12.columns
+					= form_for UserChallenge.new do |f|
+						= f.hidden_field :user_id, value: @user.id
+						= f.hidden_field :challenge_id, value: @challenge.id
+						%button{type: 'submit'} CHALLENGE ACCEPTED
 
-%br
-= @challenge.description
-%br
-%br
-%h3 SUBMISSIONS
-- @challenge.submissions.each do |s|
-	/ = link_to image_tag(s.image.url, style: "width: 33%"), s
-	%a.submission
-		= link_to "#{s.name}", submission_path(s)
+.submissions
+	%h3.submission_title SUBMISSIONS
+	%a.button{"data-reveal-id" => "myModal", href: "#"} SUBMIT YOUR CREATION
+	#myModal.reveal-modal{"data-reveal" => ""}
+		.large-12.columns
+			%h3 SUBMIT YOUR CREATION
+			%br
+		= form_for Submission.new do |f|
+			.large-6.columns
+				GIVE IT A NAME
+				= f.text_field :name
+			.large-6.columns
+				TELL US ABOUT IT
+				= f.text_area :description
+			.large-6.columns
+				CAN WE SEE IT?
+				= f.file_field :image
+				= f.hidden_field :user_id, value: @user.id
+				= f.hidden_field :challenge_id, value: @challenge.id
+			.large-6.columns
+				%button{type: 'submit'} SUBMIT
+			%a.close-reveal-modal ×
 
-
+	%ul.small-block-grid-3.small-centered
+		- @challenge.submissions.each do |s|
+			= link_to image_tag(s.image.url, style: "width: 33%"), s
