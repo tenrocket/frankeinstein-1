@@ -1,65 +1,66 @@
-.profile_image
-	= image_tag @user.image
+/ .profile_image
+/ 	= image_tag @user.image
+.container
+	%h1.profile= @user.name.upcase
 
-%h1= @user.name.upcase
+	/ %br
+	/ %a.button{href: '/challenges'} BROWSE CHALLENGES
 
-%br
-%a.button{href: '/challenges'} BROWSE CHALLENGES
+	.large-4.columns.right
+		.points
+			%h1.points= (10 * @user.submissions.count) + (50 * @user.submissions.where(winner: false).count)
+			%h3.points CHALLENGE POINTS
+	.large-6.columns.left
+		%h1.title= @user.title
+		%p= @user.description
 
-%br
-CREATIVITY SCORE:
-= (10 * @user.submissions.count) + (50 * @user.submissions.where(winner: false).count)
+	/ ADD YOUR PERSONAL MISSION STATEMENT
+	/ %br
+	/ = form_for @user do |f|
+	/ 	= f.text_field :title, :placeholder => 'You in three words'
+	/ 	%br
+	/ 	= f.text_area :description, :placeholder => 'Your personal mission statement'
+	/ 	%br
+	/ 	%button{type: 'submit'} THIS IS ME
 
-%br
-%br
-%br
-/ %h3= @user.title.upcase
-%p= @user.description
-
-ADD YOUR PERSONAL MISSION STATEMENT
-%br
-= form_for @user do |f|
-	= f.text_field :title, :placeholder => 'You in three words'
 	%br
-	= f.text_area :description, :placeholder => 'Your personal mission statement'
 	%br
-	%button{type: 'submit'} THIS IS ME
+	.challenges
+		%h3.challenge_title YOUR CHALLENGES
+		%ul.small-block-grid-3
+			= link_to image_tag('Logo.png', style: "width: 33%"), ('/challenges/21')
+			- @user.challenges.each do |c|
+				= link_to image_tag(c.challenge_image, style: "width: 33%"), c
 
-YOUR CHALLENGES
-%br
-%br
+	.interests
+		%h3.interest_title YOUR INTERESTS
+		.large-8.columns.checkboxes.small-centered
+			= form_for @user do |f|
+				= f.collection_check_boxes :interest_ids, Interest.all, :id, :name
+				%br
+				%button{type: 'submit'} UPDATE INTERESTS
 
-= link_to image_tag('Logo.png', style: "width: 33%"), ('/challenges/21')
-- @user.challenges.each do |c|
-	= link_to image_tag(c.challenge_image, style: "width: 33%"), c
-%br
-%br
-YOUR INTERESTS
-/ - @user.interests.each do |i|
-/ 	= i.name
-%br
-%br
-%br
-= form_for @user do |f|
-	= f.collection_check_boxes :interest_ids, Interest.all, :id, :name
-	%br
-	%button{type: 'submit'} ADD INTERESTS
+		/ .large-6.columns
+		/ 	- @user.interests.each do |i|
+		/ 		%h3= i.name
+		/ 		%br
 
-YOUR PORTFOLIO
-/ = image_tag @user.portfolio_item.url
-%br
-%br
-- @user.submissions.each do |s|
-	= s.name
-%br
-%br
-%br
-%br
-= form_for @user do |f|
-	= f.file_field :portfolio_item 
-	%button{type: 'submit'} ADD TO PORTFOLIO
 
-/ - Interest.all.each do |interest|
-/ 	= hidden_field_tag "user[interest_ids][]", nil
-/ 	= check_box_tag "user[interest_ids][]", interest.id, @user.interest_ids.include?(interest.id), id: dom_id(interest)
-/ 	= label_tag dom_id(interest), interest.name
+	/ YOUR PORTFOLIO
+	/ / = image_tag @user.portfolio_item.url
+	/ %br
+	/ %br
+	/ - @user.submissions.each do |s|
+	/ 	= s.name
+	/ %br
+	/ %br
+	/ %br
+	/ %br
+	/ = form_for @user do |f|
+	/ 	= f.file_field :portfolio_item 
+	/ 	%button{type: 'submit'} ADD TO PORTFOLIO
+
+	/ - Interest.all.each do |interest|
+	/ 	= hidden_field_tag "user[interest_ids][]", nil
+	/ 	= check_box_tag "user[interest_ids][]", interest.id, @user.interest_ids.include?(interest.id), id: dom_id(interest)
+	/ 	= label_tag dom_id(interest), interest.name

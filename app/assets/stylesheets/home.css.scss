@@ -40,11 +40,12 @@
 
 .section_three {
 	width: 100%;
-	height: 60%;
+	height: 75%;
+	background-image: url('debut_dark.png');
 }
 
 h1 {
-	color: gray;
+	color: #11E100;
 	font-family: 'bebasregular';
 	word-spacing: .2em;
 	text-align: center;
@@ -87,14 +88,19 @@ hr {
 	margin-top: 2em;
 }
 
-p {
+p.how {
 	text-align: justify;
-	margin-left: 6em;
 	margin-top: 4em;
+	color: white;
 }
 
 .flex-video {
 	margin-top: 4em;
 	margin-right: 4em;
+}
+
+.challenges {
+	position: absolute;
+	margin-top: 20em;
 }
 

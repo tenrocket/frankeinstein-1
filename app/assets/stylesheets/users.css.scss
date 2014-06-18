@@ -2,4 +2,111 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.container {
+	height: 100%;
+	width: 100%;
+}
 
+h1.profile {
+	margin-top: 1.5em;
+	margin-left: .5em;
+	color: black;
+	font-family: 'bebasregular';
+	word-spacing: .2em;
+	float: left;
+}
+
+h1.points {
+	float: right;
+	font-size: 5em;
+	margin-right: 2.5em;
+	color: white;
+}
+
+h1.title {
+	float: left;
+	position: absolute;
+}
+
+h3.points {
+	font-size: 1.5em;
+	display: inline-block;
+	width: 100%;
+	float: left;
+	position: absolute;
+	margin-left: 8.5em;
+	margin-top: 2.9em;
+	color: #11E100;
+}
+
+h3.interest_title {
+	text-align: center;
+	font-size: 2em;
+	margin-left: 0em;
+}
+
+h3.challenge_title {
+	text-align: center;
+	font-size: 2em;
+	margin-left: 0em;
+}
+
+p {
+	text-align: justify;
+	margin-top: 4em;
+	color: black;
+}
+
+%a.button {
+	float: right;
+}
+.profile_image {
+	position: absolute;
+}
+
+.large-4.columns.right {
+	background-image: url('debut_dark.png');
+}
+
+.large-6.columns.left {
+	margin-right: 25em;
+	margin-left: .3em;
+	margin-top: 2.5em;
+}
+
+.challenges {
+	position: absolute;
+	margin-top: 20em;
+	background: #FAF2FA;
+	width: 100%;
+}
+
+.interests {
+	position: absolute;
+	margin-top: 46em;
+	width: 100%;
+	background-image: url('debut_dark.png');
+}
+
+.large-8.columns.checkboxes {
+	font-family: 'bebasregular';
+	word-spacing: .2em;
+	text-align: center;
+	font-size: 1.5em;
+	width: 90%;
+	margin-top: 1em;
+	color: white;
+}
+
+.large-6.columns.interest_list {
+	display: inline-block;
+	position: absolute;
+}
+
+ul.small-block-grid-3 {
+	margin-bottom: 3em;
+}
+
+#user_interest_ids {
+	color: white;
+}
