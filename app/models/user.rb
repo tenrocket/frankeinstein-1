@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 	
 	has_and_belongs_to_many :interests
 	has_many :challenges, through: :user_challenges
+	has_many :created_challenges, class_name: "Challenge", foreign_key: :challenger_id
 
 	# mount_uploader :image, UserImageUploader
 	mount_uploader :portfolio_item, PortfolioItemUploader

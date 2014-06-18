@@ -18,8 +18,8 @@ gem 'carrierwave'
 gem 'omniauth', '~> 1.1.1'
 gem 'omniauth-facebook', '1.4.0'
 gem 'simple_form'
-gem 'ransack'
 gem 'debugger'
+gem 'ransack'
 
 # gem 'rmagick'
 

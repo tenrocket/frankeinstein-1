@@ -1,8 +1,8 @@
 class ChallengesController < ApplicationController
 
 	def index
-		@challenges = Challenge.all
-		@search = Search.all
+		@search = Challenge.search(params[:q])
+		@challenges = @search.result
 	end
 
 	def new

@@ -1,3 +1,100 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container {
+	height: 100%;
+	width: 100%;
+}
+.section_one {
+	background-color: white;
+	background-size: cover;
+	width: 100%;
+	height: 46.9%;
+}
+
+.homelogo {
+	width: 35%;
+	height: auto;
+	position: absolute;
+}
+
+.ipad {
+	margin-left: 50em;
+	position: absolute;
+	width: 40%;
+	height: auto;
+	margin-right: 5em;
+}
+
+.section_two {
+	background: #FAF2FA;
+	width: 100%;
+	height: 60%;
+}
+
+.home_img {
+	width: 50%;
+	height: 100%;
+}
+
+.section_three {
+	width: 100%;
+	height: 60%;
+}
+
+h1 {
+	color: gray;
+	font-family: 'bebasregular';
+	word-spacing: .2em;
+	text-align: center;
+}
+
+h3 {
+	color: gray;
+	font-size: 1em;
+	font-family: 'bebasregular';
+	word-spacing: .2em;
+	margin-left: 18.75em;
+}
+
+li {
+	margin-top: 15em;
+	list-style: none;
+	display: inline-block;
+	padding-right: 1em;
+
+}
+
+li a {
+	color: black;
+	font-size: 1.5em;
+	font-family: 'bebasregular';
+	word-spacing: .2em;
+}
+
+li a:hover {
+	color: #11E100;
+}
+
+li.homeimage {
+	width: 40%;
+	margin-top: 2.5em;
+	margin-left: 5em;
+}
+
+hr {
+	margin-top: 2em;
+}
+
+p {
+	text-align: justify;
+	margin-left: 6em;
+	margin-top: 4em;
+}
+
+.flex-video {
+	margin-top: 4em;
+	margin-right: 4em;
+}
+

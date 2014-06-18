@@ -1,3 +1,25 @@
-%h1 WELCOME TO FRANKEINSTEIN
+.container
+	.section_one
+		.homelogo
+			= link_to image_tag('homelogo.png'), root_path
+			%h3 HELLO, #{current_user.name.upcase}
+		.ipad
+			= image_tag 'iPad.png'
+		%ul
+			%li= link_to "START A CHALLENGE", '/challenges/new'
+			%li= link_to "BROWSE CHALLENGES", '/challenges'
+			%li= link_to "REGISTER", '/users/new'
 
-= link_to "REGISTER", '/users/new'
+	.section_two
+		%ul.small-block-grid-3
+			%li.homeimage= link_to image_tag('natgeo.jpg')
+			%li.homeimage= link_to image_tag('nikered.jpg')
+
+	.section_three
+		.how_it_works
+			%h1 HOW IT WORKS
+		.large-5.columns.left
+			%p Squid normcore DIY. Brunch Pinterest kogi tousled, PBR Banksy Godard kitsch ethical occupy food truck messenger bag tattooed Wes Anderson. Seitan Shoreditch food truck organic. Butcher Bushwick High Life put a bird on it tofu scenester. Cardigan Portland butcher direct trade pour-over tousled wolf, freegan viral fashion axe ugh blog cray. Wayfarers selfies Kickstarter, Tonx Echo Park slow-carb seitan raw denim chia Vice. Umami 3 wolf moon Etsy, before they sold out hoodie semiotics iPhone Blue Bottle Marfa master cleanse 90's ethical.
+		.large-5.columns.right
+			.flex-video.widescreen.youtube
+				%iframe{allowfullscreen: "", frameborder: "0", height: "315", src: "//www.youtube.com/embed/rW5DHe1Mi40", width: "560"}

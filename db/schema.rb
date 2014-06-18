@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140613005042) do
+ActiveRecord::Schema.define(version: 20140617190937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,9 +27,10 @@ ActiveRecord::Schema.define(version: 20140613005042) do
     t.datetime "updated_at"
     t.string   "challenge_image"
     t.string   "challenger"
+    t.integer  "challenger_id"
   end
 
-  create_table "challenges_interests", force: true do |t|
+  create_table "challenges_interests", id: false, force: true do |t|
     t.integer "challenge_id"
     t.integer "interest_id"
   end
@@ -78,12 +79,13 @@ ActiveRecord::Schema.define(version: 20140613005042) do
   create_table "submissions", force: true do |t|
     t.string   "name"
     t.string   "description"
-    t.string   "attachment"
+    t.string   "image"
     t.string   "status"
     t.integer  "user_id"
     t.integer  "challenge_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "winner",       default: false
   end
 
   create_table "user_challenges", force: true do |t|

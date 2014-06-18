@@ -7,20 +7,29 @@
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
   %body
-    .small
-      - if current_user
-        Signed in as #{current_user.name}
-        = link_to "Log Out", logout_path
-      - else
-        = link_to "Login with Facebook", '/auth/facebook'
-    - flash.each do |name, msg|
-      = content_tag :div, msg, :id => "flash_#{name}"
-    .row
-      .large-6.columns
-        .row.collapse
-          .small-10.columns
-            = form_tag @searches do
-              = text_field_tag :keywords
-              %button.postfix{type: 'submit_tag'} SEARCH        
+    .off-canvas-wrap{"data-offcanvas" => ""}
+      .inner-wrap
+        %nav.tab-bar
+          %section.left-small
+            %a.left-off-canvas-toggle.menu-icon{href: "#"}
+              %span
+          %section.middle.tab-bar-section
+            .small
+              - if current_user
+                Signed in as #{current_user.name}
+                = link_to "Log Out", logout_path
+              - else
+                = link_to "Login with Facebook", '/auth/facebook'
+
+              - flash.each do |name, msg|
+                = content_tag :div, msg, :id => "flash_#{name}"
+          %section.right
+            .row.collapse
+              .large-8.small-9.columns
+                = search_form_for @search do |f|
+                  = f.text_field :description_cont, :placeholder => 'Browse Challenges'
+              .large-4.small-3.columns 
+                %button.postfix{type: 'submit', href: "/challenges"} SEARCH
+
     = yield
     = javascript_include_tag "application"

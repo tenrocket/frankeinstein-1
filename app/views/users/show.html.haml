@@ -7,9 +7,9 @@
 %a.button{href: '/challenges'} BROWSE CHALLENGES
 
 %br
-POINTS
-- @user.points.all do |p|
-	= p.value
+CREATIVITY SCORE:
+= (10 * @user.submissions.count) + (50 * @user.submissions.where(winner: false).count)
+
 %br
 %br
 %br
@@ -28,6 +28,8 @@ ADD YOUR PERSONAL MISSION STATEMENT
 YOUR CHALLENGES
 %br
 %br
+
+= link_to image_tag('Logo.png', style: "width: 33%"), ('/challenges/21')
 - @user.challenges.each do |c|
 	= link_to image_tag(c.challenge_image, style: "width: 33%"), c
 %br
@@ -45,6 +47,10 @@ YOUR INTERESTS
 
 YOUR PORTFOLIO
 / = image_tag @user.portfolio_item.url
+%br
+%br
+- @user.submissions.each do |s|
+	= s.name
 %br
 %br
 %br

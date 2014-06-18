@@ -24,7 +24,10 @@
 			UPLOAD IMAGE
 			= f.file_field :challenge_image
 			%br
-			= fields_for @user do |ff|
-				= ff.hidden_field :user_id, value: @user.id
-				= ff.hidden_field :challenger, value: @user.challenger
+			= f.hidden_field :challenger_id, value: @user.id
+	.row
+		.large-4.columns			
+			TAGS
+			= f.collection_check_boxes :interest_ids, Interest.all, :id, :name
+			%br
 			%button{type: 'submit'} CREATE CHALLENGE

@@ -1,0 +1,40 @@
+
+%br
+= image_tag @submission.image
+%h2= @submission.name
+
+= form_for @submission, method: :put do |f|
+	SELECT AS WINNER
+	= f.radio_button :winner, true
+	%button{type: 'submit'} SAVE
+
+= form_for @submission, method: :delete do |f|
+	%button{type: 'submit'} REMOVE
+
+%h4= " By: #{@submission.user.name}"
+
+
+%h3 DESCRIPTION
+
+= @submission.description
+
+%h3 COMMENTS
+
+- @submission.comments.each do |c|
+	%br
+	= "#{c.content} -"
+	%a{href: "/users/#{c.user.id}"} #{c.user.name}
+	%br
+	= form_for c, method: :delete do |f|
+		= f.submit "x", method: :delete
+%br
+
+.large-4.columns
+	= form_for Comment.new, method: :post do |f|
+		= f.hidden_field :commentable_id, value: @submission.id
+		= f.hidden_field :commentable_type, value: "Submission"
+		= f.hidden_field :user_id, value: @user.id
+		= f.text_area :content, :placeholder => "Add Comment"
+		%br
+		%button{type: 'submit'} POST
+		%br
