@@ -23,13 +23,6 @@
 
               - flash.each do |name, msg|
                 = content_tag :div, msg, :id => "flash_#{name}"
-          %section.right
-            .row.collapse
-              .large-8.small-9.columns
-                = search_form_for @search do |f|
-                  = f.text_field :description_cont, :placeholder => 'Browse Challenges'
-              .large-4.small-3.columns 
-                %button.postfix{type: 'submit', href: "/challenges"} SEARCH
 
     = yield
     = javascript_include_tag "application"

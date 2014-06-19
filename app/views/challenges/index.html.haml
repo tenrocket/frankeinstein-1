@@ -8,6 +8,12 @@
 		%li.filter= sort_link @search, :end_date, "END DATE"
 		%li.filter= sort_link @search, :updated_at, "RECENTLY UPDATED"
 
+.row.collapse
+	= search_form_for @search do |f|
+		.large-6.columns
+			= f.text_field :description_cont, :placeholder => 'Search Challenges'
+		.large-6.columns.search
+			%button.postfix{type: 'submit', href: "/challenges"} SEARCH
 .row.chal
 	.challenge
 		%ul.small-block-grid-3.small-centered

@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.search_box {
+	position: absolute;
+}
+
 li.h3.filter {
 	margin-left: 0;
 	color: #11E100;
@@ -76,4 +80,9 @@ ul.small-block-grid-3.small-centered {
 
 .submissions {
 	background: #FAF2FA;
+}
+
+.large-6.columns.search {
+	width: 25%;
+	margin-right: 25%;
 }
