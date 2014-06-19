@@ -5,7 +5,7 @@ class SubmissionsController < ApplicationController
 		if @new_submission.save
 			redirect_to user_path(current_user)
 		else
-			redirect_to :back, notice: 'Sorry, you can only submit once per challenge.'
+			redirect_to :back, alert: 'Sorry, you can only submit once per challenge.'
 		end
 	end
 

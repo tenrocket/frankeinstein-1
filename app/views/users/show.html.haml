@@ -60,35 +60,25 @@
 			- @user.challenges.each do |c|
 				= link_to image_tag(c.challenge_image, style: "width: 33%; height: 15em;"), c
 
-		.interests
-			%h3.interest_title YOUR INTERESTS
-			.large-8.columns.checkboxes.small-centered
-				= form_for @user do |f|
-					= f.collection_check_boxes :interest_ids, Interest.all, :id, :name
-					%br
-					%button{type: 'submit'} UPDATE INTERESTS
+		.portfolio
+			%h3.interest_title YOUR PORTFOLIO
+			%ul.small-block-grid-3.small-centered.folio
+				- @user.submissions.each do |s|
+					= link_to image_tag(s.image, style: "width: 33%; height: 15em;"), s
+					/ = image_tag @user.portfolio_item.url, id: 'portfolio_upload'
+		
+			.interests
+				%h3.interest_title YOUR INTERESTS
+				.large-8.columns.checkboxes.small-centered
+					= form_for @user do |f|
+						= f.collection_check_boxes :interest_ids, Interest.all, :id, :name
+						%br
+						%button{type: 'submit'} UPDATE INTERESTS
 
-		/ .large-6.columns
-		/ 	- @user.interests.each do |i|
-		/ 		%h3= i.name
-		/ 		%br
 
-
-	/ YOUR PORTFOLIO
-	/ / = image_tag @user.portfolio_item.url
-	/ %br
-	/ %br
-	/ - @user.submissions.each do |s|
-	/ 	= s.name
-	/ %br
-	/ %br
-	/ %br
-	/ %br
+			
+		
 	/ = form_for @user do |f|
 	/ 	= f.file_field :portfolio_item 
 	/ 	%button{type: 'submit'} ADD TO PORTFOLIO
 
-	/ - Interest.all.each do |interest|
-	/ 	= hidden_field_tag "user[interest_ids][]", nil
-	/ 	= check_box_tag "user[interest_ids][]", interest.id, @user.interest_ids.include?(interest.id), id: dom_id(interest)
-	/ 	= label_tag dom_id(interest), interest.name

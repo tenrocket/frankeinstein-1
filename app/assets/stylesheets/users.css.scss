@@ -134,6 +134,30 @@ ul.small-block-grid-3 {
 	width: 100%;
 }
 
-#user_interest_ids {
-	color: white;
+label {
+	color: lightgray;
+}
+
+label:hover {
+	color: #11E100;
+}
+
+.portfolio {
+	position: absolute;
+	width: 100%;
+	background: black;
+}
+
+.portfolio_upload {
+	width: 33%;
+	height: 15em;
+}
+
+#portfolio_upload {
+	width: 33%;
+	height: 15em;
+}
+
+ul.small-block-grid-3.small-centered.folio {
+	background: black;
 }

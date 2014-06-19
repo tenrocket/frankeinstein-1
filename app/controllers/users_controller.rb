@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@interest = @user.interests.build
+		@interest = @user.interests.all
 		@challenge = @user.challenges.all
 	end
 
