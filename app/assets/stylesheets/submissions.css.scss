@@ -1,3 +1,45 @@
 // Place all the styles related to the Submissions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+a.button {
+	margin-left: 0;
+}
+
+h4.winning {
+	color: black;
+	font-family: 'bebasregular';
+	word-spacing: .2em;
+}
+
+.submission_image {
+	position: absolute;
+}
+
+.answers {
+	margin-left: 55%;
+	margin-top: 15%;
+	position: absolute;
+}
+
+.comments {
+	background: #FAF2FA;
+	text-align: center;
+}
+
+#delete_button {
+	background: black;
+}
+
+#delete_button:hover {
+	color: #11E100;
+}
+
+#post_button {
+	margin-left: 43%;
+	background: black;
+}
+
+#post_button:hover {
+	color: #11E100;
+}

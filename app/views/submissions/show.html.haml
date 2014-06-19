@@ -1,40 +1,76 @@
+%h1= @submission.name
 
-%br
-= image_tag @submission.image
-%h2= @submission.name
-
-= form_for @submission, method: :put do |f|
-	SELECT AS WINNER
-	= f.radio_button :winner, true
-	%button{type: 'submit'} SAVE
-
-= form_for @submission, method: :delete do |f|
-	%button{type: 'submit'} REMOVE
-
-%h4= " By: #{@submission.user.name}"
-
-
-%h3 DESCRIPTION
-
-= @submission.description
-
-%h3 COMMENTS
-
-- @submission.comments.each do |c|
-	%br
-	= "#{c.content} -"
-	%a{href: "/users/#{c.user.id}"} #{c.user.name}
-	%br
-	= form_for c, method: :delete do |f|
-		= f.submit "x", method: :delete
-%br
-
-.large-4.columns
-	= form_for Comment.new, method: :post do |f|
-		= f.hidden_field :commentable_id, value: @submission.id
-		= f.hidden_field :commentable_type, value: "Submission"
-		= f.hidden_field :user_id, value: @user.id
-		= f.text_area :content, :placeholder => "Add Comment"
+.row.collapse
+	%ul.block-grid.four-up.mobile-two-up.no-bullet
+		%li.project-description
+			%h3.challenge_description CREATOR
+			%p.description= link_to @submission.user.name, user_path(@submission.user.id)
+		%li.project-thumbnail
+			%img
+				= image_tag @submission.image
 		%br
-		%button{type: 'submit'} POST
 		%br
+		%li.project-description
+			%h3.challenge_description DESCRIPTION
+			%p.description= @submission.description
+		%br
+		%br
+		%li.project-description
+			%h3.challenge_description TIME SUBMITTED 
+			%p.description= @submission.created_at
+		%br
+		%br
+		%li.project-description
+			.row
+				.large-12.columns
+					%a.button.submission{"data-reveal-id" => "myModal", href: "#"} SELECT AS WINNER
+					#myModal.reveal-modal{"data-reveal" => ""}
+						.large-12.columns
+							%h1 ARE YOU SURE THIS IS THE WINNER?
+							%br
+							= image_tag @submission.image
+						.answers
+							= form_for @submission, method: :put do |f|
+								.large-push-6.columns
+								%h4.winning YES, I AM CERTAIN
+								= f.radio_button :winner, true
+								.large-6.columns.right-push-6
+								%h4.winning NO, I THINK I'LL KEEP LOOKING
+								= f.radio_button :winner, false
+								.large-12.columns.right
+									%button{type: 'submit'} SAVE
+						%a.close-reveal-modal ×
+		%br
+		%br
+		%br
+		%li.project-description
+			.row
+				.large-12.columns
+					= form_for @submission, method: :delete do |f|
+						%button{type: 'submit', id: 'delete_button'} DELETE SUBMISSION
+
+.comments
+	%h3.submission_title COMMENTS
+	%h1{"data-reveal-id" => "myModal2", href: "#"}= link_to "+"
+	#myModal2.reveal-modal{"data-reveal" => ""}
+		.large-12.columns
+			%h1 TELL #{@submission.user.name} WHAT YOU THINK
+			%br
+		.large-9.columns.small-centered
+			= form_for Comment.new, method: :post do |f|
+				= f.hidden_field :commentable_id, value: @submission.id
+				= f.hidden_field :commentable_type, value: "Submission"
+				= f.hidden_field :user_id, value: @user.id
+				= f.text_area :content, :placeholder => "Add Comment"
+				%br
+				%button{type: 'submit', id: 'post_button'} POST
+		%a.close-reveal-modal ×
+
+	- @submission.comments.each do |c|
+		%br
+		= "#{c.content} -"
+		%a{href: "/users/#{c.user.id}"} #{c.user.name}
+		%br
+		/ = form_for c, method: :delete do |f|
+		/ 	%button{type: 'submit'} x
+
