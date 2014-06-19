@@ -13,9 +13,9 @@
 		.large-6.columns
 			= f.text_field :description_cont, :placeholder => 'Search Challenges'
 		.large-6.columns.search
-			%button.postfix{type: 'submit', href: "/challenges"} SEARCH
+			%button.postfix{type: 'submit', href: "/challenges", id: 'search_button'} SEARCH
 .row.chal
 	.challenge
 		%ul.small-block-grid-3.small-centered
-		- @challenges.each do |c|
-			= link_to image_tag(c.challenge_image.url, style: "width: 33%"), c
+			- @challenges.each do |c|
+				= link_to image_tag(c.challenge_image.url, style: "width: 33%; height: 225px;", id: 'challenge_image'), c

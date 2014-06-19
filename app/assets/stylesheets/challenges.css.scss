@@ -60,6 +60,10 @@ h3.submission_title {
 	margin-left: 0em;
 }
 
+h3.submission {
+	margin-left: 0em;
+}
+
 p.description {
 	margin: 0px;
 }
@@ -80,9 +84,22 @@ ul.small-block-grid-3.small-centered {
 
 .submissions {
 	background: #FAF2FA;
+	height: 50%
 }
 
 .large-6.columns.search {
 	width: 25%;
 	margin-right: 25%;
+}
+
+#challenge_image {
+	padding: .1em;
+}
+
+#search_button {
+	border: 0;
+}
+
+#submit_challenge {
+	margin-left: 40%;
 }

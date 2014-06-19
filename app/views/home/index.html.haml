@@ -1,15 +1,14 @@
 .container
-	.section_one
-		.homelogo
-			= link_to image_tag('homelogo.png'), root_path
-			%h3 HELLO, #{@user.name.upcase}
-		.ipad
-			= image_tag 'iPad.png'
-		%ul
-			%li= link_to "START A CHALLENGE", '/challenges/new'
-			%li= link_to "BROWSE CHALLENGES", '/challenges'
-			%li= link_to "REGISTER", '/users/new'
-		
+	.homelogo
+		= link_to image_tag('homelogo.png'), root_path
+		%h3 HELLO, #{@user.name.upcase}
+	.ipad
+		= image_tag 'iPad.png'
+	%ul
+		%li= link_to "START A CHALLENGE", '/challenges/new'
+		%li= link_to "BROWSE CHALLENGES", '/challenges'
+		%li= link_to "REGISTER", '/auth/facebook'
+	
 	.section_two
 		%ul.small-block-grid-3
 			%li.homeimage= link_to image_tag('natgeo.jpg')

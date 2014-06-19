@@ -17,15 +17,15 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@interest = @user.interests.build
-		@challenge = @user.challenges.build
+		@challenge = @user.challenges.all
 	end
 
 	def update
 		@user = User.find(params[:id])
 		if @user.update_attributes(user_params)
-			redirect_to '/user/#{@user.id}'
+			redirect_to user_path(@user)
 		else
-			redirect_to '/user/#{@user.id}', notice: "Failed to update interests.  Please try again."
+			redirect_to user_path(@user), notice: "Failed to update interests.  Please try again."
 		end
 	end
 	

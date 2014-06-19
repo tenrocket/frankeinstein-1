@@ -56,17 +56,17 @@
 	.challenges
 		%h3.challenge_title YOUR CHALLENGES
 		%ul.small-block-grid-3.small-centered
-			= link_to image_tag('Logo.png', style: "width: 33%"), ('/challenges/21')
+			= link_to image_tag('defaultchallenge.jpg', style: "width: 33%; height: 15em;"), ('/challenges/21')
 			- @user.challenges.each do |c|
-				= link_to image_tag(c.challenge_image, style: "width: 33%"), c
+				= link_to image_tag(c.challenge_image, style: "width: 33%; height: 15em;"), c
 
-	.interests
-		%h3.interest_title YOUR INTERESTS
-		.large-8.columns.checkboxes.small-centered
-			= form_for @user do |f|
-				= f.collection_check_boxes :interest_ids, Interest.all, :id, :name
-				%br
-				%button{type: 'submit'} UPDATE INTERESTS
+		.interests
+			%h3.interest_title YOUR INTERESTS
+			.large-8.columns.checkboxes.small-centered
+				= form_for @user do |f|
+					= f.collection_check_boxes :interest_ids, Interest.all, :id, :name
+					%br
+					%button{type: 'submit'} UPDATE INTERESTS
 
 		/ .large-6.columns
 		/ 	- @user.interests.each do |i|

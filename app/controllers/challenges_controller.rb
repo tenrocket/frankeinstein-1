@@ -1,6 +1,7 @@
 class ChallengesController < ApplicationController
 
 	def index
+		@user = current_user
 		@search = Challenge.search(params[:q])
 		@challenges = @search.result
 	end
@@ -27,7 +28,7 @@ class ChallengesController < ApplicationController
 	def update
 		@challenge = Challenge.find(params[:id])
 		if @challenge.update_attributes(challenge_params)
-			redirect_to '/challenges/#{@new_challenge.id}'
+			redirect_to challenge_path(@challenge)
 		else
 			render :edit, notice: "Failed to update challenge.  Please try again."
 		end
