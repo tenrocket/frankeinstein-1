@@ -1,8 +1,36 @@
-/ .profile_image
-/ 	= image_tag @user.image
-.container
-	%h1.profile= @user.name.upcase
 
+.container
+	.edit_profile
+		.profile_image
+			= image_tag @user.image
+		.profile_info
+			%h1.profile= @user.name.upcase
+			%h3.edit{"data-reveal-id" => "myModal", href: "#"}= link_to "EDIT PROFILE"
+			#myModal.reveal-modal{"data-reveal" => ""}
+				.large-12.columns
+					%h1 WHO ARE YOU, #{@user.name}?
+					%br
+				.large-9.columns.small-centered
+					= form_for @user, method: :put do |f|
+						.large-6.columns
+						%h3.bio PROFILE PHOTO
+						= f.file_field :image, value: @user.image
+						.large-6.columns
+						%h3.bio NAME
+						= f.text_field :name, value: @user.name
+						.large-6.columns
+						%h3.bio THREE WORD STATEMENT THAT DESCRIBES YOU
+						= f.text_field :title, value: @user.title
+						.large-6.columns
+						%h3.bio SHORT BIO
+						= f.text_field :description, value: @user.description
+						.large-6.columns
+						%h3.bio EMAIL
+						= f.email_field :email, value: @user.email
+						%br
+						.large-6.columns
+						%button{type: 'submit', id: 'post_button'} POST
+				%a.close-reveal-modal ×
 	/ %br
 	/ %a.button{href: '/challenges'} BROWSE CHALLENGES
 

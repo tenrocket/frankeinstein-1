@@ -7,6 +7,32 @@
 	width: 100%;
 }
 
+.edit_profile {
+	margin-left: 1.6em
+}
+.profile_image {
+	width: 10em;
+	height: auto;
+}
+
+.profile_info {
+	margin-left: 10em;
+}
+
+h3.edit {
+	position: absolute;
+	margin-top: 10%;
+	margin-left: 16%;
+}
+
+h3.edit:hover {
+	color: #11E100;
+}
+
+h3.bio {
+	margin-left: 0;
+}
+
 h1.profile {
 	margin-top: 1.5em;
 	margin-left: .5em;
@@ -55,6 +81,7 @@ p {
 	text-align: justify;
 	margin-top: 4em;
 	color: black;
+	margin-left: .5em;
 }
 
 %a.button {
@@ -71,7 +98,7 @@ p {
 .large-6.columns.left {
 	margin-right: 25em;
 	margin-left: .3em;
-	margin-top: 2.5em;
+	margin-top: 4em;
 }
 
 .challenges {
