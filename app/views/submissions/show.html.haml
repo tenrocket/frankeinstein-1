@@ -28,6 +28,7 @@
 						.large-12.columns
 							%h1 ARE YOU SURE THIS IS THE WINNER?
 							%br
+						.large-6.columns
 							= image_tag @submission.image
 						.answers
 							= form_for @submission, method: :put do |f|

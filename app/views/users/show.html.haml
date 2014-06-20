@@ -1,4 +1,3 @@
-
 .container
 	.edit_profile
 		.profile_image
@@ -31,28 +30,16 @@
 						.large-6.columns
 						%button{type: 'submit', id: 'post_button'} POST
 				%a.close-reveal-modal ×
-	/ %br
-	/ %a.button{href: '/challenges'} BROWSE CHALLENGES
-
+	
 	.large-4.columns.right
 		.points
-			%h1.points= (10 * @user.submissions.count) + (50 * @user.submissions.where(winner: false).count)
+			%h1.points= (10 * @user.submissions.count) + (50 * @user.submissions.where(winner: true).count)
 			%h3.points CHALLENGE POINTS
+	%a.button{href: '/challenges', id: 'browse'} BROWSE CHALLENGES
 	.large-6.columns.left
 		%h1.title= @user.title
 		%p= @user.description
 
-	/ ADD YOUR PERSONAL MISSION STATEMENT
-	/ %br
-	/ = form_for @user do |f|
-	/ 	= f.text_field :title, :placeholder => 'You in three words'
-	/ 	%br
-	/ 	= f.text_area :description, :placeholder => 'Your personal mission statement'
-	/ 	%br
-	/ 	%button{type: 'submit'} THIS IS ME
-
-	%br
-	%br
 	.challenges
 		%h3.challenge_title YOUR CHALLENGES
 		%ul.small-block-grid-3.small-centered
