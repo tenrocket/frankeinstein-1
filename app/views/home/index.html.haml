@@ -13,9 +13,9 @@
 		%li= link_to "REGISTER", '/auth/facebook'
 	
 	.section_two
-		%ul.small-block-grid-3
-			%li.homeimage= link_to image_tag('natgeo.jpg')
-			%li.homeimage= link_to image_tag('nikered.jpg')
+		%ul.small-block-grid-3.small-centered
+			%li.homeimage= link_to image_tag('natgeo.jpg', style: "width: 100%; height: 45%;", id: 'home_image'), '/challenges/6'
+			%li.homeimage= link_to image_tag('nikered.jpg', style: "width: 100%; height: 45%;", id: 'home_image'), '/challenges/4'
 
 	.section_three
 		.how_it_works

@@ -1,0 +1,15 @@
+.large-12.columns
+	%h1 EDIT CHALLENGE
+= form_for @challenge, method: :put do |f|
+	.large-6.columns
+		= f.text_field :name
+	.large-6.columns
+		= f.text_area :description
+	.large-6.columns
+		= f.date_select :start_date
+	.large-6.columns
+		= f.date_select :end_date
+	.large-6.columns
+		= f.file_field :challenge_image
+	.large-6.columns
+		%button{type: 'submit'} UPDATE CHALLENGE

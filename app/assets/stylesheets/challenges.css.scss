@@ -36,6 +36,8 @@ h1.challenge_profile {
 li.project-thumbnail {
 	margin: 0px;
 	float: right;
+	max-width: 28em;
+	max-height: 28em;
 }
 
 li.project-description {
@@ -74,7 +76,6 @@ p.description {
 
 a.button {
 	margin-left: 40%;
-	position: absolute;
 }
 
 ul.small-block-grid-3.small-centered {
@@ -102,4 +103,8 @@ ul.small-block-grid-3.small-centered {
 
 #submit_challenge {
 	margin-left: 40%;
+}
+
+ul.block-grid.four-up.mobile-two-up.no-bullet {
+	margin-top: 2em;
 }

@@ -1,6 +1,8 @@
 class ChallengesController < ApplicationController
-
+	skip_filter :ensure_logged_in, only: [:index, :show]
+	
 	def index
+
 		@user = current_user
 		@search = Challenge.search(params[:q])
 		@challenges = @search.result
