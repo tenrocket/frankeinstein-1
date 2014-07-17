@@ -19,7 +19,7 @@ gem 'omniauth', '~> 1.1.1'
 gem 'omniauth-facebook', '1.4.0'
 gem 'simple_form'
 gem 'ransack'
-gem 'rails_12factor', group: :production
+# gem 'rails_12factor', group: :production
 
 # gem 'rmagick'
 

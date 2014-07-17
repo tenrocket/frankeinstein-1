@@ -30,32 +30,37 @@
 		%li.project-description
 			.row
 				.large-12.columns
-					= form_for UserChallenge.new do |f|
-						= f.hidden_field :user_id, value: @user.id
-						= f.hidden_field :challenge_id, value: @challenge.id
-						%button{type: 'submit'} CHALLENGE ACCEPTED
+					- if @user == nil
+						%a.button{href: '/auth/facebook'} LOGIN OR REGISTER TO ACCEPT CHALLENGE
+					- else
+						= form_for UserChallenge.new do |f|
+							= f.hidden_field :user_id, value: @user.id
+							= f.hidden_field :challenge_id, value: @challenge.id
+							%button{type: 'submit'} CHALLENGE ACCEPTED
 		%li.project-description
 			.row
 				.large-12.columns
+				- if @user == nil
+				- else
 					%a.button{"data-reveal-id" => "myModal", href: "#", id: 'delete_button'} SUBMIT YOUR CREATION
 					#myModal.reveal-modal{"data-reveal" => ""}
 						.large-12.columns
 							%h1 SUBMIT YOUR CREATION
 							%br
-						= form_for Submission.new do |f|
-							.large-6.columns
-								%h3.submission GIVE IT A NAME
-								= f.text_field :name
-							.large-6.columns
-								%h3.submission TELL US ABOUT IT
-								= f.text_area :description
-							.large-6.columns
-								%h3.submission CAN WE SEE IT?
-								= f.file_field :image
-								= f.hidden_field :user_id, value: @user.id
-								= f.hidden_field :challenge_id, value: @challenge.id
-							.large-6.columns
-								%button{type: 'submit'} SUBMIT
+							= form_for Submission.new do |f|
+								.large-6.columns
+									%h3.submission GIVE IT A NAME
+									= f.text_field :name
+								.large-6.columns
+									%h3.submission TELL US ABOUT IT
+									= f.text_area :description
+								.large-6.columns
+									%h3.submission CAN WE SEE IT?
+									= f.file_field :image
+									= f.hidden_field :user_id, value: @user.id
+									= f.hidden_field :challenge_id, value: @challenge.id
+								.large-6.columns
+									%button{type: 'submit'} SUBMIT
 							%a.close-reveal-modal ×
 
 .submissions
